@@ -1,0 +1,11 @@
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\bin\Debug\Assignment03.exe.config
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\bin\Debug\Assignment03.exe
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\bin\Debug\Assignment03.pdb
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\obj\Debug\Assignment03.csproj.AssemblyReference.cache
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\obj\Debug\Assignment03.csproj.SuggestedBindingRedirects.cache
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\obj\Debug\Assignment03.HugeNumberForm.resources
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\obj\Debug\Assignment03.Properties.Resources.resources
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\obj\Debug\Assignment03.csproj.GenerateResource.cache
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\obj\Debug\Assignment03.csproj.CoreCompileInputs.cache
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\obj\Debug\Assignment03.exe
+C:\Users\2249436\Documents\AppDev01Assignment03\Assignment03\Assignment03\obj\Debug\Assignment03.pdb
