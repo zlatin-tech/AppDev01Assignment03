@@ -60,6 +60,7 @@
             // hugeNb1
             // 
             this.hugeNb1.Location = new System.Drawing.Point(124, 30);
+            this.hugeNb1.MaxLength = 40;
             this.hugeNb1.Name = "hugeNb1";
             this.hugeNb1.Size = new System.Drawing.Size(632, 20);
             this.hugeNb1.TabIndex = 1;
@@ -76,6 +77,7 @@
             // hugeNb2
             // 
             this.hugeNb2.Location = new System.Drawing.Point(124, 79);
+            this.hugeNb2.MaxLength = 40;
             this.hugeNb2.Name = "hugeNb2";
             this.hugeNb2.Size = new System.Drawing.Size(632, 20);
             this.hugeNb2.TabIndex = 3;
@@ -193,6 +195,7 @@
             // 
             this.resultText.Location = new System.Drawing.Point(124, 296);
             this.resultText.Name = "resultText";
+            this.resultText.ReadOnly = true;
             this.resultText.Size = new System.Drawing.Size(632, 20);
             this.resultText.TabIndex = 18;
             // 
