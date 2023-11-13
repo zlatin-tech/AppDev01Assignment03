@@ -20,26 +20,26 @@ namespace Assignment03
        
         private void addBtn_Click(object sender, EventArgs e)
         {
-
+            resultText.Text = new HugeInteger(hugeNb1.Text).Add(new HugeInteger(hugeNb2.Text)).ToString();
         }
         private void multiplyBtn_Click(object sender, EventArgs e)
         { 
-            
+            resultText.Text = new HugeInteger(hugeNb1.Text).Multiply(new HugeInteger(hugeNb2.Text)).ToString();
         }
 
         private void substractBtn_Click(object sender, EventArgs e)
         {
-
+            resultText.Text = new HugeInteger(hugeNb1.Text).Substract(new HugeInteger(hugeNb2.Text)).ToString();
         }
 
         private void divideBtn_Click(object sender, EventArgs e)
         {
-
+            resultText.Text = new HugeInteger(hugeNb1.Text).Divide(new HugeInteger(hugeNb2.Text)).ToString();
         }
 
         private void remainderBtn_Click(object sender, EventArgs e)
         {
-
+            resultText.Text = new HugeInteger(hugeNb1.Text).Remainder(new HugeInteger(hugeNb2.Text)).ToString();
         }
 
         private void isEqualBtn_Click(object sender, EventArgs e)

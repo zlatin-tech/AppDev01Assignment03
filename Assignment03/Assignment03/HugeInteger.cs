@@ -102,10 +102,32 @@ namespace Assignment03
                 string zeros = new string('0', lengthDifference);
                 num1 = zeros + num1;
             }
-            for (int i = num1.Length; ;)
+            //adding extra 0 in case of carry
+            num1 = "0" + num1;
+            num2 = "0" + num2;
+            int a;
+            int b = 0;
+            int c = 0;
+            int d = 0;//carry value
+            
+            for (int i = num1.Length -1;i >= 0 ;i--)
             { 
-                
+                 a = (int)num1[i] - '0';
+                 b = (int)num2[i] - '0';
+                 c = a + b + d;
+
+                if (c >= 10)
+                {
+                    d = c / 10;
+                    c = c % 10;
+                }
+                else
+                {
+                    d = 0;
+                }
+                answer = c.ToString() + answer;
             }
+            
             answer = negative + answer;
             
             return new HugeInteger(answer);
