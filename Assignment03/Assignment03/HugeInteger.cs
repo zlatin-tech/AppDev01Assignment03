@@ -274,19 +274,15 @@ namespace Assignment03
                 throw new DivideByZeroException("Cannot divide by zero.");
             }
 
-            // Prepare the initial variables for the division
             HugeInteger count = new HugeInteger("0");
             HugeInteger one = new HugeInteger("1");
             HugeInteger product = new HugeInteger("0");
 
-            // Determine the sign of the result
             bool isNegativeResult = this.Value.StartsWith("-") ^ number2.Value.StartsWith("-");
 
-            // Remove the signs for division
             HugeInteger num1 = new HugeInteger(this.Value.Replace("-", ""));
             HugeInteger num2 = new HugeInteger(number2.Value.Replace("-", ""));
 
-            // Perform the division using subtraction
             while (product.IsLessThanOrEqualTo(num1))
             {
                 count = count.Add(one);
@@ -296,7 +292,6 @@ namespace Assignment03
             // The loop goes one step too far, subtract one from the count
             count = count.Subtract(one);
 
-            // If the result is supposed to be negative, adjust the sign
             if (isNegativeResult)
             {
                 count = new HugeInteger("-" + count.Value);

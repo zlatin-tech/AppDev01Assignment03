@@ -119,6 +119,13 @@ namespace Assignment03
             resultText.Text = "";
         }
 
-
+        private void isZero_Click(object sender, EventArgs e)
+        {
+            HugeInteger num = new HugeInteger(hugeNb1.Text);
+            if (num.IsZero())
+                resultText.Text = "True";
+            else
+                resultText.Text = "False";
+        }
     }
 }

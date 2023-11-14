@@ -46,6 +46,7 @@
             this.resultText = new System.Windows.Forms.TextBox();
             this.isLessThanOrEqualBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
+            this.isZero = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // int1Label
@@ -201,7 +202,7 @@
             // 
             // isLessThanOrEqualBtn
             // 
-            this.isLessThanOrEqualBtn.Location = new System.Drawing.Point(320, 238);
+            this.isLessThanOrEqualBtn.Location = new System.Drawing.Point(181, 240);
             this.isLessThanOrEqualBtn.Name = "isLessThanOrEqualBtn";
             this.isLessThanOrEqualBtn.Size = new System.Drawing.Size(142, 23);
             this.isLessThanOrEqualBtn.TabIndex = 19;
@@ -219,11 +220,22 @@
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
+            // isZero
+            // 
+            this.isZero.Location = new System.Drawing.Point(449, 240);
+            this.isZero.Name = "isZero";
+            this.isZero.Size = new System.Drawing.Size(142, 23);
+            this.isZero.TabIndex = 21;
+            this.isZero.Text = "First Is Zero";
+            this.isZero.UseVisualStyleBackColor = true;
+            this.isZero.Click += new System.EventHandler(this.isZero_Click);
+            // 
             // HugeNumberForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 373);
+            this.Controls.Add(this.isZero);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.isLessThanOrEqualBtn);
             this.Controls.Add(this.resultText);
@@ -269,6 +281,7 @@
         private System.Windows.Forms.TextBox resultText;
         private System.Windows.Forms.Button isLessThanOrEqualBtn;
         private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.Button isZero;
     }
 }
 
