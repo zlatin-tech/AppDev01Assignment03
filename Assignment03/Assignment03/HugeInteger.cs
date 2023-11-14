@@ -12,28 +12,26 @@ namespace Assignment03
     {
         private string value;
         
-
+        
         public HugeInteger(string value)
         {
-            SetValue(value);
+            Value = value;
         }
-
-        public void SetValue(string value)
-        {
-            if (IsValidInteger(value))
+        public string Value
+        { 
+            get { return value; }
+            set
             {
-                value = RemoveLeadingZeros(value);
-                if (string.IsNullOrWhiteSpace(value) || value == "-")
-                {
-                    value = "0";
+                if (IsValidInteger(value))
+                { 
+                    value = RemoveLeadingZeros(value);
+                    if (string.IsNullOrWhiteSpace(value) || value == "-")
+                    {
+                        value = "0";
+                    }
+                    this.value = value;
                 }
-                this.value = value;
             }
-        }
-
-        public string GetValue()
-        {
-            return value;
         }
 
         private static bool IsValidInteger(string input)
@@ -73,8 +71,8 @@ namespace Assignment03
         // PART I METHODS (Add method not implemented)
         public HugeInteger Add(HugeInteger number2)
         {
-            string num1 = this.ToString();
-            string num2 = number2.ToString();
+            string num1 = this.Value;
+            string num2 = number2.Value;
             string answer = "";
             string negative = "";
             if (num1.Contains("-") && !num2.Contains("-"))
@@ -137,15 +135,15 @@ namespace Assignment03
         }
         public HugeInteger Subtract(HugeInteger number2)
         {
-            string num1 = this.ToString();
-            string num2 = number2.ToString();
+            string num1 = this.Value;
+            string num2 = number2.Value;
             string answer = "";
             string negative = "";
 
             // Handle cases with negative numbers
             if (num1.Contains("-") && !num2.Contains("-"))
             {
-                return this.Add(new HugeInteger("-" + number2.ToString()));
+                return this.Add(new HugeInteger("-" + number2.Value));
 
             }
             if (!num1.Contains("-") && num2.Contains("-"))
@@ -223,17 +221,13 @@ namespace Assignment03
 
         public HugeInteger Multiply(HugeInteger number2)
         {
-            // First, determine the sign of the result based on the original values.
-            bool isNegativeResult = this.ToString().StartsWith("-") ^ number2.ToString().StartsWith("-");
+            bool isNegativeResult = this.Value.StartsWith("-") ^ number2.Value.StartsWith("-");
 
-            // Initialize result as 0.
             HugeInteger result = new HugeInteger("0");
 
-            // Remove negative signs for simplicity of calculation.
-            string num1 = this.ToString().Replace("-", "");
-            string num2 = number2.ToString().Replace("-", "");
+            string num1 = this.Value.Replace("-", "");
+            string num2 = number2.Value.Replace("-", "");
 
-            // Reverse num2 to start multiplication from the least significant digit.
             num2 = new string(num2.Reverse().ToArray());
 
             for (int i = 0; i < num2.Length; i++)
@@ -241,32 +235,26 @@ namespace Assignment03
                 int digit = num2[i] - '0';
                 HugeInteger temp = new HugeInteger("0");
 
-                // Perform repeated addition based on the current digit.
                 for (int j = 0; j < digit; j++)
                 {
                     temp = temp.Add(new HugeInteger(num1));
                 }
 
-                // Account for the position of the digit in the multiplier.
-                temp = new HugeInteger(temp.ToString() + new string('0', i));
+                temp = new HugeInteger(temp.Value + new string('0', i));
 
-                // Add the result of the current digit's multiplication to the total result.
                 result = result.Add(temp);
             }
 
-            // Adjust the sign of the result if necessary.
             if (isNegativeResult)
             {
-                result = new HugeInteger("-" + result.ToString().TrimStart('0'));
+                result = new HugeInteger("-" + result.Value.TrimStart('0'));
             }
             else
             {
-                // Remove leading zeros, if any.
-                result = new HugeInteger(result.ToString().TrimStart('0'));
+                result = new HugeInteger(result.Value.TrimStart('0'));
             }
 
-            // Ensure we don't return a blank string or just a "-" sign
-            if (result.ToString() == "" || result.ToString() == "-")
+            if (result.Value == "" || result.Value == "-")
             {
                 return new HugeInteger("0");
             }
@@ -292,11 +280,11 @@ namespace Assignment03
             HugeInteger product = new HugeInteger("0");
 
             // Determine the sign of the result
-            bool isNegativeResult = this.ToString().StartsWith("-") ^ number2.ToString().StartsWith("-");
+            bool isNegativeResult = this.Value.StartsWith("-") ^ number2.Value.StartsWith("-");
 
             // Remove the signs for division
-            HugeInteger num1 = new HugeInteger(this.ToString().Replace("-", ""));
-            HugeInteger num2 = new HugeInteger(number2.ToString().Replace("-", ""));
+            HugeInteger num1 = new HugeInteger(this.Value.Replace("-", ""));
+            HugeInteger num2 = new HugeInteger(number2.Value.Replace("-", ""));
 
             // Perform the division using subtraction
             while (product.IsLessThanOrEqualTo(num1))
@@ -311,7 +299,7 @@ namespace Assignment03
             // If the result is supposed to be negative, adjust the sign
             if (isNegativeResult)
             {
-                count = new HugeInteger("-" + count.ToString());
+                count = new HugeInteger("-" + count.Value);
             }
 
             return count;
@@ -333,14 +321,14 @@ namespace Assignment03
 
         public bool IsZero()
         {
-            string n = this.ToString();
+            string n = this.Value;
             return n[0] == '0' || (n.Length > 1 && n[0] == '-' && n[1] == '0');
         }
 
         // PART II: COMPARING HUGE INTEGERS METHODS
         public bool IsEqualTo(HugeInteger number2)
         {
-            string value = this.value, value2 = number2.GetValue();
+            string value = this.value, value2 = number2.Value;
             return value.Equals(value2);
         }
 
@@ -351,7 +339,7 @@ namespace Assignment03
 
         public bool IsGreaterThan(HugeInteger number2)
         {
-            string value = this.value, value2 = number2.GetValue();
+            string value = this.value, value2 = number2.Value;
 
             if (!value.Contains("-") && value2.Contains("-"))
             {
@@ -405,7 +393,7 @@ namespace Assignment03
 
         public bool IsLessThan(HugeInteger number2)
         {
-            string value = this.value, value2 = number2.GetValue();
+            string value = this.value, value2 = number2.Value;
             if (!value.Contains("-") && value2.Contains("-"))
             {
                 return false;
