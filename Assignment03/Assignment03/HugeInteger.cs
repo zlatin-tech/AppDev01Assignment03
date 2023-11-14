@@ -316,8 +316,33 @@ namespace Assignment03
 
         public override string ToString()
         {
-            return value;
+            string val = Value;
+            string output = "";
+            bool isNegative = false;
+
+            if (val[0] == '-')
+            {
+                isNegative = true;
+                val = val.Substring(1); // Remove the negative sign TEMPORARILY
+            }
+
+            for (int i = 0; i < val.Length; i++)
+            {
+                if (i > 0 && (val.Length - i) % 3 == 0)
+                {
+                    output += " ";
+                }
+                output += val[i];
+            }
+
+            if (isNegative)
+            {
+                output = "-" + output;
+            }
+
+            return output;
         }
+
 
         public bool IsZero()
         {
