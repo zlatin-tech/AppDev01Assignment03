@@ -78,11 +78,13 @@ namespace Assignment03
             string negative = "";
             if (num1.Contains("-") && !num2.Contains("-"))
             {
-                return number2.Substract(this);
+                num1 = num1.Replace("-", "");
+                return number2.Subtract(new HugeInteger(num1));
             }
             if (!num1.Contains("-") && num2.Contains("-"))
             {
-                return number2.Substract(this);
+                num2 = num2.Replace("-", "");
+                return this.Subtract(new HugeInteger(num2));
             }
             if (num1.Contains("-") && num2.Contains("-"))
             {
@@ -132,10 +134,92 @@ namespace Assignment03
             
             return new HugeInteger(answer);
         }
-        public HugeInteger Substract(HugeInteger number2)
+        public HugeInteger Subtract(HugeInteger number2)
         {
-            return null;
+            string num1 = this.ToString();
+            string num2 = number2.ToString();
+            string answer = "";
+            string negative = "";
+
+            // Handle cases with negative numbers
+            if (num1.Contains("-") && !num2.Contains("-"))
+            {
+                return this.Add(new HugeInteger("-" + number2.ToString()));
+
+            }
+            if (!num1.Contains("-") && num2.Contains("-"))
+            {
+                num2 = num2.Replace("-", "");
+                return this.Add(new HugeInteger(num2));
+            }
+            if (num1.Contains("-") && num2.Contains("-"))
+            {
+                num2 = num2.Replace("-", "");
+                return new HugeInteger(num2).Add(this);
+            }
+
+            // Make sure num1 is greater than or equal to num2
+            if (string.Compare(num1, num2) < 0)
+            {
+                string temp = num1;
+                num1 = num2;
+                num2 = temp;
+                negative = "-";
+            }
+
+            int lengthDifference = Math.Abs(num1.Length - num2.Length);
+
+            if (num1.Length > num2.Length)
+            {
+                string zeros = new string('0', lengthDifference);
+                num2 = zeros + num2;
+            }
+            else if (num2.Length > num1.Length)
+            {
+                string zeros = new string('0', lengthDifference);
+                num1 = zeros + num1;
+            }
+
+            // adding extra 0 in case of borrow
+            num1 = "0" + num1;
+            num2 = "0" + num2;
+
+            int a;
+            int b = 0;
+            int c = 0;
+            int borrow = 0;
+
+            for (int i = num1.Length - 1; i >= 0; i--)
+            {
+                a = (int)num1[i] - '0';
+                b = (int)num2[i] - '0';
+                c = a - b - borrow;
+
+                if (c < 0)
+                {
+                    borrow = 1;
+                    c = 10 + c;
+                }
+                else
+                {
+                    borrow = 0;
+                }
+                answer = c.ToString() + answer;
+            }
+
+            // Remove leading zeros
+            answer = answer.TrimStart('0');
+
+            if (string.IsNullOrEmpty(answer))
+            {
+                return new HugeInteger("0");
+            }
+
+            answer = negative + answer;
+
+            return new HugeInteger(answer);
         }
+
         public HugeInteger Multiply(HugeInteger number2)
         {
             return null;

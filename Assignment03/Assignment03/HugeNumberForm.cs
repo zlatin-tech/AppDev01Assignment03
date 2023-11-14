@@ -29,7 +29,7 @@ namespace Assignment03
 
         private void substractBtn_Click(object sender, EventArgs e)
         {
-            resultText.Text = new HugeInteger(hugeNb1.Text).Substract(new HugeInteger(hugeNb2.Text)).ToString();
+            resultText.Text = new HugeInteger(hugeNb1.Text).Subtract(new HugeInteger(hugeNb2.Text)).ToString();
         }
 
         private void divideBtn_Click(object sender, EventArgs e)
