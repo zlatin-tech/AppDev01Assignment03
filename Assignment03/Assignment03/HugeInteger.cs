@@ -320,7 +320,10 @@ namespace Assignment03
 
         public HugeInteger Remainder(HugeInteger number2) 
         {
-            return null;
+            HugeInteger result = this.Divide(number2);
+            result = result.Multiply(number2);
+            result = this.Subtract(result);
+            return result;
         }
 
         public override string ToString()
