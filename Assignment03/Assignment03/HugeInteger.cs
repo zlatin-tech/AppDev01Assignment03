@@ -11,6 +11,7 @@ namespace Assignment03
     internal class HugeInteger
     {
         private string value;
+        
 
         public HugeInteger(string value)
         {
@@ -222,12 +223,101 @@ namespace Assignment03
 
         public HugeInteger Multiply(HugeInteger number2)
         {
-            return null;
+            // First, determine the sign of the result based on the original values.
+            bool isNegativeResult = this.ToString().StartsWith("-") ^ number2.ToString().StartsWith("-");
+
+            // Initialize result as 0.
+            HugeInteger result = new HugeInteger("0");
+
+            // Remove negative signs for simplicity of calculation.
+            string num1 = this.ToString().Replace("-", "");
+            string num2 = number2.ToString().Replace("-", "");
+
+            // Reverse num2 to start multiplication from the least significant digit.
+            num2 = new string(num2.Reverse().ToArray());
+
+            for (int i = 0; i < num2.Length; i++)
+            {
+                int digit = num2[i] - '0';
+                HugeInteger temp = new HugeInteger("0");
+
+                // Perform repeated addition based on the current digit.
+                for (int j = 0; j < digit; j++)
+                {
+                    temp = temp.Add(new HugeInteger(num1));
+                }
+
+                // Account for the position of the digit in the multiplier.
+                temp = new HugeInteger(temp.ToString() + new string('0', i));
+
+                // Add the result of the current digit's multiplication to the total result.
+                result = result.Add(temp);
+            }
+
+            // Adjust the sign of the result if necessary.
+            if (isNegativeResult)
+            {
+                result = new HugeInteger("-" + result.ToString().TrimStart('0'));
+            }
+            else
+            {
+                // Remove leading zeros, if any.
+                result = new HugeInteger(result.ToString().TrimStart('0'));
+            }
+
+            // Ensure we don't return a blank string or just a "-" sign
+            if (result.ToString() == "" || result.ToString() == "-")
+            {
+                return new HugeInteger("0");
+            }
+
+            return result;
         }
+
+
+
+
+
+
         public HugeInteger Divide(HugeInteger number2)
         {
-            return null;
+            if (number2.IsZero())
+            {
+                throw new DivideByZeroException("Cannot divide by zero.");
+            }
+
+            // Prepare the initial variables for the division
+            HugeInteger count = new HugeInteger("0");
+            HugeInteger one = new HugeInteger("1");
+            HugeInteger product = new HugeInteger("0");
+
+            // Determine the sign of the result
+            bool isNegativeResult = this.ToString().StartsWith("-") ^ number2.ToString().StartsWith("-");
+
+            // Remove the signs for division
+            HugeInteger num1 = new HugeInteger(this.ToString().Replace("-", ""));
+            HugeInteger num2 = new HugeInteger(number2.ToString().Replace("-", ""));
+
+            // Perform the division using subtraction
+            while (product.IsLessThanOrEqualTo(num1))
+            {
+                count = count.Add(one);
+                product = num2.Multiply(count);
+            }
+
+            // The loop goes one step too far, subtract one from the count
+            count = count.Subtract(one);
+
+            // If the result is supposed to be negative, adjust the sign
+            if (isNegativeResult)
+            {
+                count = new HugeInteger("-" + count.ToString());
+            }
+
+            return count;
         }
+
+
         public HugeInteger Remainder(HugeInteger number2) 
         {
             return null;

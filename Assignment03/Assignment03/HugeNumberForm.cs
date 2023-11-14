@@ -34,7 +34,17 @@ namespace Assignment03
 
         private void divideBtn_Click(object sender, EventArgs e)
         {
-            resultText.Text = new HugeInteger(hugeNb1.Text).Divide(new HugeInteger(hugeNb2.Text)).ToString();
+            HugeInteger num1 = new HugeInteger(hugeNb1.Text);
+            HugeInteger num2 = new HugeInteger(hugeNb2.Text);
+            HugeInteger answer = num1.Divide(num2);
+            if (answer == null)
+            {
+                resultText.Text = "ERROR: CANNOT DIVIDE BY 0";
+            }
+            else 
+            {
+                resultText.Text = answer.ToString();
+            }
         }
 
         private void remainderBtn_Click(object sender, EventArgs e)
